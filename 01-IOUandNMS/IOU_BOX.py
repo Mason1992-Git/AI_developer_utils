@@ -69,6 +69,7 @@ def bboxes_iou(bboxes_a, bboxes_b, xyxy=True, GIoU=False, DIoU=False, CIoU=False
 
         area_a = torch.prod(bboxes_a[:, 2:], 1)
         area_b = torch.prod(bboxes_b[:, 2:], 1)
+
     en = (tl < br).type(tl.type()).prod(dim=2)#Determine if there is an intersection
     # print("en>>>:",(tl < br).type(tl.type()))
     area_i = torch.prod(br - tl, 2) * en  # * ((tl < br).all())
@@ -91,32 +92,43 @@ def bboxes_iou(bboxes_a, bboxes_b, xyxy=True, GIoU=False, DIoU=False, CIoU=False
                 return iou - (rho2 / c2 + v * alpha)  # CIoU
     return iou
 
-def nms(boxes, thresh, mode='inter'):
+def nms(boxes, thresh):
     args = boxes[:, 0].argsort(descending=True)
     sort_boxes = boxes[args]
+    # print(sort_boxes)
     keep_boxes = []
 
     while len(sort_boxes) > 0:
-        _box = sort_boxes[0]
+        _box = sort_boxes[0:1]
+        cal_box = sort_boxes[0:1][:,1:]
+        # print("_box>>>:",_box)
+        # print("cal_box>>>:",cal_box)
         keep_boxes.append(_box)
 
         if len(sort_boxes) > 1:
             _boxes = sort_boxes[1:]
-            _iou = bboxes_iou(_box, _boxes)
-            sort_boxes = _boxes[_iou < thresh]
+            cal_boxes = sort_boxes[1:][:,1:]
+            # print("_boxes>>>:",_boxes)
+            # print("cal_boxes>>>:",cal_boxes)
+            _iou = bboxes_iou(cal_box, cal_boxes)
+            # print("_iou>>>:",_iou[0])
+            # print("_boxes>>>:",_boxes)
+            sort_boxes = _boxes[_iou[0] < thresh]
         else:
             break
     return keep_boxes
 
 if __name__ == '__main__':
 
-    a = torch.tensor([[0,0,40,40],[30,30,60,60]])
-    b = torch.tensor([[40,40,50,50],[20,20,50,50],[70,70,90,90]])
+    a = torch.tensor([[0,0,40,40]])
+    b = torch.tensor([[0.8,40,40,50,50],[0.9,20,20,50,50],[0.7,70,70,90,90]])
     # _a = a[:,None,:2]
     # _b = b[:,:2]
     # # print(_a)
     # # print(_b)
     # print(torch.max(_a,_b))
 
-    iou = bboxes_iou(a,b)
-    print(iou)
+    # iou_value = bboxes_iou(a,b)
+    # print(iou_value)
+    nms_value = nms(b,0.1)
+    print(nms_value)

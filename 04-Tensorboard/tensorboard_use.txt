@@ -1,0 +1,5 @@
+tensorboard使用方法：
+1.在存放logs文件的路径下(不要进入logs文件夹下)CMD（找到对应文件夹，在路径栏输入cmd回车）
+2.输入：
+tensorboard --logdir logs
+上述指令修改logs即可，logs为存放日志文件的文件名
