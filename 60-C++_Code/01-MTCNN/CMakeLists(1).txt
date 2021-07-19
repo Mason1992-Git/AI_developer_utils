@@ -1,0 +1,30 @@
+cmake_minimum_required(VERSION 3.16)
+project(01_MTCNN))
+
+set(CMAKE_PREFIX_PATH E:\01-Lib\libtorch)
+set(OpenCV_DIR E:\01-Lib\opencv\build\x64\vc15\lib)
+
+find_package(Torch REQUIRED)
+find_package(OpenCV REQUIRED)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${TORCH_CXX_FLAGS}")
+
+
+add_executable(01_MTCNN  main.cpp)
+target_link_libraries(01_MTCNN ${TORCH_LIBRARIES} ${OpenCV_LIBS})
+set_property(TARGET DeepLearningStudy PROPERTY CXX_STANDARD 11)
+
+if (MSVC)
+    file(GLOB TORCH_DLLS "${TORCH_INSTALL_PREFIX}/lib/*.dll")
+    add_custom_command(TARGET 01_MTCNN
+            POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            ${TORCH_DLLS}
+            $<TARGET_FILE_DIR:01_MTCNN>)
+
+    file(GLOB OPENCV_DLLS "E:\01-Lib\opencv\build\x64\vc15\bin\*.dll")
+    add_custom_command(TARGET 01_MTCNN
+            POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            ${OPENCV_DLLS}
+            $<TARGET_FILE_DIR:01_MTCNN>)
+endif (MSVC)

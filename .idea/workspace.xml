@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="93e0dc8e-cf14-4b72-b9af-518be5264a6e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/00-Pycharm_Use/Pycharm_skills.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/02-PictureConvert/images/1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/200-utils.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/200-utils.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02-PictureConvert/convert_pic.py" beforeDir="false" afterPath="$PROJECT_DIR$/02-PictureConvert/convert_pic.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/01-IOUandNMS/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,10 +37,11 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/02-PictureConvert/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/01-IOUandNMS" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\60-Python\200-utils\01-IOUandNMS" />
       <recent name="E:\60-Python\200-utils\02-PictureConvert\images" />
     </key>
   </component>
@@ -99,5 +94,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
